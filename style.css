@@ -100,19 +100,19 @@ body {
 /* ---- Profile Section ---- */
 .profile {
     text-align: center;
-    padding: 16px 0;
+    padding: 20px 0;
 }
 
 .avatar-wrapper {
     position: relative;
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 20px;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 24px;
 }
 
 .avatar-glow {
     position: absolute;
-    inset: -8px;
+    inset: -10px;
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
@@ -122,8 +122,8 @@ body {
         #6B1120,
         #FF2B34
     );
-    filter: blur(18px);
-    opacity: 0.45;
+    filter: blur(20px);
+    opacity: 0.5;
     animation: glowSpin 5s linear infinite;
 }
 
@@ -137,11 +137,18 @@ body {
     height: 100%;
     border-radius: 50%;
     background: var(--bg-secondary);
-    border: 3px solid rgba(255, 43, 52, 0.3);
+    border: 3px solid rgba(255, 43, 52, 0.4);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    border-color: #FF2B34;
+    box-shadow: 0 0 30px rgba(255, 43, 52, 0.3);
 }
 
 .avatar img {
@@ -151,40 +158,23 @@ body {
 }
 
 .name {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, #FFFFFF 0%, #FF2B34 50%, #FFDF00 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: 8px;
 }
 
 .bio {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-top: 6px;
+    font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.stats {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 16px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-.stat strong {
-    color: var(--text-primary);
-    font-weight: 700;
-}
-
-.stat-divider {
-    opacity: 0.3;
-    color: var(--accent-red);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
 }
 
 /* ---- Links Section ---- */
@@ -518,12 +508,12 @@ body {
     }
 
     .name {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .avatar-wrapper {
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
     }
 
     .link-card {
