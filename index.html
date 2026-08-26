@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nezu Content Creator</title>
+    <link rel="icon" type="image/jpeg" href="Logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <canvas id="particles"></canvas>
+
+    <main class="container">
+        <!-- Profile Section -->
+        <section class="profile fade-in">
+            <div class="avatar-wrapper">
+                <div class="avatar-glow"></div>
+                <div class="avatar">
+                    <img src="Logo.jpg" alt="Logo">
+                </div>
+            </div>
+            <h1 class="name">Nezu</h1>
+            <p class="bio">Content Creator | Gamer | Streamer</p>
+            <div class="stats">
+                <span class="stat"><strong>Followers</strong></span>
+                <span class="stat-divider">•</span>
+                <span class="stat"><strong>Video</strong></span>
+                <span class="stat-divider">•</span>
+                <span class="stat"><strong>Live</strong></span>
+            </div>
+        </section>
+
+        <!-- Links Section -->
+        <section class="links">
+            <a href="https://www.tiktok.com/@nezu_ita" target="_blank" rel="noopener" class="link-card fade-in" data-delay="100" style="--accent: #00f2ea; --accent-glow: rgba(0,242,234,0.3);">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05A6.34 6.34 0 003.15 15.3a6.34 6.34 0 0010.86 4.45V13a8.28 8.28 0 005.58 2.17v-3.45a4.85 4.85 0 01-5.58-2.73V2h3.45a4.83 4.83 0 014.14 4.69z"/></svg>
+                </div>
+                <div class="link-info">
+                    <span class="link-name">TikTok</span>
+                    <span class="link-desc">@nezu_ita</span>
+                </div>
+                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="https://www.youtube.com/@Nezu_ITA" target="_blank" rel="noopener" class="link-card fade-in" data-delay="150" style="--accent: #ff0000; --accent-glow: rgba(255,0,0,0.3);">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </div>
+                <div class="link-info">
+                    <span class="link-name">YouTube</span>
+                    <span class="link-desc">@Nezu_ITA</span>
+                </div>
+                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="https://www.twitch.tv/nezu_ita" target="_blank" rel="noopener" class="link-card fade-in" data-delay="200" style="--accent: #9146ff; --accent-glow: rgba(145,70,255,0.3);">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+                </div>
+                <div class="link-info">
+                    <span class="link-name">Twitch</span>
+                    <span class="link-desc">nezu_ita</span>
+                </div>
+                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="https://kick.com/nezu-ita" target="_blank" rel="noopener" class="link-card fade-in" data-delay="250" style="--accent: #53fc18; --accent-glow: rgba(83,252,24,0.3);">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm4.5 7.5v7h2.25v-7h-2.25zm3.75 0v7H14.5v-3.5c0-1.38 1.12-2.5 2.5-2.5h1v-1h-1c-1.93 0-3.5 1.57-3.5 3.5V16.5h2.25v-3.25c0-.69-.56-1.25-1.25-1.25H12v-1.5h1.25c-1.93 0-3.5 1.57-3.5 3.5V16.5h2.25V12c0-1.38 1.12-2.5 2.5-2.5h1v-1h-1c-1.93 0-3.5 1.57-3.5 3.5V16.5h2.25v-7h-2.25z"/></svg>
+                </div>
+                <div class="link-info">
+                    <span class="link-name">Kick</span>
+                    <span class="link-desc">nezu-ita</span>
+                </div>
+                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="https://www.instagram.com/andrea_alii" target="_blank" rel="noopener" class="link-card fade-in" data-delay="300" style="--accent: #e1306c; --accent-glow: rgba(225,48,108,0.3);">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </div>
+                <div class="link-info">
+                    <span class="link-name">Instagram</span>
+                    <span class="link-desc">@andrea_alii</span>
+                </div>
+                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="https://discord.gg/FTxE8kSKSV" target="_blank" rel="noopener" class="link-card fade-in" data-delay="350" style="--accent: #5865f2; --accent-glow: rgba(88,101,242,0.3);">
+                <div class="link-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+                </div>
+                <div class="link-info">
+                    <span class="link-name">Discord</span>
+                    <span class="link-desc">Entra nel server</span>
+                </div>
+                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation fade-in" data-delay="400">
+            <div class="donation-card">
+                <div class="donation-icon">🎮</div>
+                <h2 class="donation-title">Supporta il Nuovo PC</h2>
+                <p class="donation-desc">Aiutami a raggiungere il goal per il nuovo setup!</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-progress="35"></div>
+                </div>
+                <p class="progress-text">€350 / €1000</p>
+                <a href="https://paypal.me/tuolink" target="_blank" rel="noopener" class="donate-btn">
+                    <span>Donami un caffè ☕</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer fade-in" data-delay="500">
+            <p>Made with passion &amp; ❤️</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
