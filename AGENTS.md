@@ -1,43 +1,65 @@
-# AGENTS.md - Istruzioni Progetto SitoWeb
+# AGENTS.md - Nezu Content Creator Website
 
-## Contesto
-Questo è il sito link-in-bio per un content creator TikTok.
-Il sito è hostato gratuitamente su GitHub Pages.
+## Info Progetto
+- **Sito live**: https://aliandrea96.github.io
+- **GitHub repo**: https://github.com/AliAndrea96/AliAndrea96.github.io
+- **Buy Me a Coffee**: https://buymeacoffee.com/nezu_ita
 
-## Struttura Progetto
+## Struttura Cartella SitoWeb
 ```
 SitoWeb/
 ├── index.html      # Pagina principale
 ├── style.css       # Stili e animazioni
-├── script.js       # Particelle, effetti interattivi
-├── Logo.jpg        # Logo del creator (usa come avatar)
-└── AGENTS.md       # Questo file
+├── script.js       # Particelle, effetti interattivi, coin burst
+├── Logo.jpg        # Logo/Avatar del creator
+└── AGENTS.md       # Questo file (NO push su GitHub)
 ```
 
-## Palette Colori (da Gemini)
-- 🔴 Rosso Neon (Primario): `#FF2B34` - Bottoni, bordi, link in evidenza
-- 🍷 Rosso Scuro (Secondario): `#6B1120` - Gradienti, sfondi, card
-- ⬛ Nero Antracite (Background): `#191A1E` - Sfondo principale dark mode
-- ⚪ Bianco (Testo): `#FFFFFF` - Titoli e testi leggibili
-- ⚡ Giallo Elettrico (Highlight): `#FFDF00` - Notifiche, badge, dettagli a contrasto
-- 💠 Ciano Glitch (Dettaglio): `#38E1FF` - Hover, effetti grafici
+## Palette Colori
+- 🔴 Rosso Neon (Primario): #FF2B34
+- 🍷 Rosso Scuro (Secondario): #6B1120
+- ⬛ Nero Antracite (Background): #191A1E
+- ⚪ Bianco (Testo): #FFFFFF
+- ⚡ Giallo Elettrico (Highlight): #FFDF00
+- 💠 Ciano Glitch (Dettaglio): #38E1FF
 
-## Personalizzazioni da fare
-- [x] Logo.jpg usato come avatar
-- [x] Palette colori applicata
-- [ ] Sostituire "Il Tuo Nome" con il nome reale del creator
-- [ ] Aggiornare tutti gli username (@tuoaccount) con quelli reali
-- [ ] Aggiornare gli URL dei link con quelli reali
-- [ ] Aggiornare la sezione donazioni (PayPal/Ko-fi link e importi)
+## Link Social del Creator
+- TikTok: https://www.tiktok.com/@nezu_ita
+- YouTube: https://www.youtube.com/@Nezu_ITA
+- Twitch: https://www.twitch.tv/nezu_ita
+- Kick: https://kick.com/nezu-ita
+- Instagram: https://www.instagram.com/andrea_alii
+- Discord: https://discord.gg/FTxE8kSKSV
 
-## Deploy
-1. Creare repo GitHub: `tuo-username.github.io`
-2. Caricare tutti i file nella root
-3. Settings → Pages → branch main
-4. URL finale: `https://tuo-username.github.io`
+## Funzionalità Sito
+1. Particelle floating animate (palette colori)
+2. Avatar con glow rotante (conic-gradient)
+3. Link card con magnetic hover effect
+4. Sezione donazioni con PC gaming SVG + coin burst animation
+5. Tilt 3D sulla card donazioni
+6. Parallax effect sullo scroll
+7. Responsive mobile-first
 
-## Note tecniche
-- Nessuna dipendenza esterna (tranne Google Fonts)
-- Totalmente statico (HTML + CSS + JS puro)
-- Responsive mobile-first
-- Effetti: particelle floating, glow rotante, magnetic hover, tilt 3D, ripple, parallax
+## Note Importanti
+- Logo.jpg va sostituito con il logo reale del creator
+- Il sito è hostato su GitHub Pages (gratuito)
+- Buy Me a Coffee usa Stripe per i pagamenti
+- Il contatore monete è solo visuale (non legato a donazioni reali)
+- AGENTS.md NON va pushato su GitHub (è solo per riferimento locale)
+
+## Comandi Git utili
+```bash
+# Push modifiche
+Copy-Item "C:\Users\Andrea\Desktop\SitoWeb\*" -Destination "C:\Users\Andrea\AppData\Local\Temp\opencode\site-repo\" -Recurse -Force
+cd C:\Users\Andrea\AppData\Local\Temp\opencode\site-repo
+git add .
+git commit -m "Descrizione modifica"
+git push origin main
+```
+
+## Ultimo aggiornamento
+- Sito deployed e funzionante
+- Sezione donazioni con coin burst animation
+- Profile section migliorata (senza stats)
+- Footer: "Nezu Content Creator © 2026"
+- Tutti i link social inseriti correttamente

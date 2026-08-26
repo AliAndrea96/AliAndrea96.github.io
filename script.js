@@ -9,6 +9,7 @@
     const ctx = canvas.getContext('2d');
     let particles = [];
     let w, h;
+    let animating = true;
 
     function resize() {
         w = canvas.width = window.innerWidth;
@@ -26,15 +27,14 @@
         reset() {
             this.x = Math.random() * w;
             this.y = Math.random() * h;
-            this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.3;
-            this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.35 + 0.05;
+            this.size = Math.random() * 1.5 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.2;
+            this.speedY = (Math.random() - 0.5) * 0.2;
+            this.opacity = Math.random() * 0.3 + 0.05;
             this.pulse = Math.random() * Math.PI * 2;
-            this.pulseSpeed = Math.random() * 0.02 + 0.005;
+            this.pulseSpeed = Math.random() * 0.01 + 0.003;
             const colors = [
                 [255, 43, 52],    // Rosso Neon
-                [107, 17, 32],    // Rosso Scuro
                 [255, 223, 0],    // Giallo Elettrico
                 [56, 225, 255],   // Ciano Glitch
             ];
@@ -62,12 +62,14 @@
         }
     }
 
-    const count = Math.min(Math.floor((w * h) / 15000), 60);
+    // Reduced particle count for better performance
+    const count = Math.min(Math.floor((w * h) / 25000), 35);
     for (let i = 0; i < count; i++) {
         particles.push(new Particle());
     }
 
     function animate() {
+        if (!animating) return;
         ctx.clearRect(0, 0, w, h);
         particles.forEach(p => {
             p.update();
@@ -75,6 +77,12 @@
         });
         requestAnimationFrame(animate);
     }
+
+    // Pause animations when tab is not visible
+    document.addEventListener('visibilitychange', () => {
+        animating = !document.hidden;
+        if (animating) animate();
+    });
 
     animate();
 })();
@@ -84,10 +92,14 @@
     const btn = document.getElementById('donateBtn');
     if (!btn) return;
 
-    const coins = ['🪙', '⭐', '✨', '💫', '🔥'];
+    const coins = ['🪙', '⭐', '✨', '🔥'];
+    let isAnimating = false;
 
     btn.addEventListener('click', function(e) {
-        for (let i = 0; i < 10; i++) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        for (let i = 0; i < 8; i++) {
             setTimeout(() => {
                 const coin = document.createElement('div');
                 coin.className = 'coin';
@@ -99,13 +111,15 @@
                 
                 coin.style.left = startX + 'px';
                 coin.style.top = startY + 'px';
-                coin.style.setProperty('--random-x', (Math.random() - 0.5) * 100 + 'px');
+                coin.style.setProperty('--random-x', (Math.random() - 0.5) * 80 + 'px');
                 
                 document.body.appendChild(coin);
                 
-                setTimeout(() => coin.remove(), 1000);
-            }, i * 50);
+                setTimeout(() => coin.remove(), 1200);
+            }, i * 60);
         }
+
+        setTimeout(() => { isAnimating = false; }, 600);
     });
 })();
 
@@ -116,14 +130,14 @@
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            const moveX = x * 0.08;
-            const moveY = y * 0.08;
+            const moveX = x * 0.05;
+            const moveY = y * 0.05;
             card.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
+        }, { passive: true });
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
-        });
+        }, { passive: true });
     });
 })();
 
@@ -174,14 +188,14 @@
         const rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(600px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
-    });
+        card.style.transform = `perspective(600px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+    }, { passive: true });
 
     card.addEventListener('mouseleave', () => {
         card.style.transform = '';
-        card.style.transition = 'transform 0.5s ease';
-        setTimeout(() => card.style.transition = '', 500);
-    });
+        card.style.transition = 'transform 0.4s ease';
+        setTimeout(() => card.style.transition = '', 400);
+    }, { passive: true });
 })();
 
 // ---- Subtle parallax on scroll ----
