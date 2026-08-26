@@ -79,24 +79,34 @@
     animate();
 })();
 
-// ---- Progress Bar Animation ----
-(function initProgress() {
-    const fill = document.querySelector('.progress-fill');
-    if (!fill) return;
+// ---- Coin Burst Animation ----
+(function initCoinBurst() {
+    const btn = document.getElementById('donateBtn');
+    if (!btn) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = fill.dataset.progress || 0;
-                setTimeout(() => {
-                    fill.style.width = target + '%';
-                }, 300);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
+    const coins = ['🪙', '⭐', '✨', '💫', '🔥'];
 
-    observer.observe(fill);
+    btn.addEventListener('click', function(e) {
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                const coin = document.createElement('div');
+                coin.className = 'coin';
+                coin.textContent = coins[Math.floor(Math.random() * coins.length)];
+                
+                const rect = this.getBoundingClientRect();
+                const startX = rect.left + rect.width / 2 + (Math.random() - 0.5) * 60;
+                const startY = rect.top;
+                
+                coin.style.left = startX + 'px';
+                coin.style.top = startY + 'px';
+                coin.style.setProperty('--random-x', (Math.random() - 0.5) * 100 + 'px');
+                
+                document.body.appendChild(coin);
+                
+                setTimeout(() => coin.remove(), 1000);
+            }, i * 50);
+        }
+    });
 })();
 
 // ---- Magnetic Hover Effect on Cards ----
@@ -119,7 +129,7 @@
 
 // ---- Ripple Effect on Donate Button ----
 (function initRipple() {
-    const btn = document.querySelector('.donate-btn');
+    const btn = document.getElementById('donateBtn');
     if (!btn) return;
 
     btn.addEventListener('click', function(e) {

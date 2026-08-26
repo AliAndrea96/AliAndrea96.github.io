@@ -106,17 +106,40 @@
         <!-- Donation Section -->
         <section class="donation fade-in" data-delay="400">
             <div class="donation-card">
-                <div class="donation-icon">🎮</div>
-                <h2 class="donation-title">Supporta il Nuovo PC</h2>
-                <p class="donation-desc">Aiutami a raggiungere il goal per il nuovo setup!</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" data-progress="35"></div>
+                <div class="donation-pc-wrapper">
+                    <div class="donation-pc-glow"></div>
+                    <svg class="donation-pc-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Monitor -->
+                        <rect x="15" y="10" width="90" height="55" rx="4" stroke="#FF2B34" stroke-width="2.5" fill="rgba(255,43,52,0.08)"/>
+                        <rect x="22" y="17" width="76" height="41" rx="2" fill="#191A1E"/>
+                        <!-- Screen content - gaming grid -->
+                        <rect x="26" y="21" width="15" height="15" rx="1" fill="rgba(56,225,255,0.3)"/>
+                        <rect x="44" y="21" width="15" height="15" rx="1" fill="rgba(255,43,52,0.3)"/>
+                        <rect x="62" y="21" width="15" height="15" rx="1" fill="rgba(255,223,0,0.3)"/>
+                        <rect x="80" y="21" width="15" height="15" rx="1" fill="rgba(83,252,24,0.3)"/>
+                        <rect x="26" y="39" width="69" height="14" rx="1" fill="rgba(255,255,255,0.05)"/>
+                        <!-- Stand -->
+                        <path d="M50 65 L70 65 L66 78 L54 78 Z" fill="rgba(255,43,52,0.15)" stroke="#FF2B34" stroke-width="1.5"/>
+                        <rect x="48" y="78" width="24" height="3" rx="1.5" fill="#FF2B34"/>
+                        <!-- Keyboard -->
+                        <rect x="30" y="85" width="60" height="8" rx="2" fill="rgba(255,43,52,0.1)" stroke="rgba(255,43,52,0.4)" stroke-width="1"/>
+                        <!-- RGB lights -->
+                        <circle cx="20" cy="37" r="2" fill="#38E1FF" class="pc-light-1"/>
+                        <circle cx="100" cy="37" r="2" fill="#FF2B34" class="pc-light-2"/>
+                        <circle cx="60" cy="90" r="1.5" fill="#FFDF00" class="pc-light-3"/>
+                    </svg>
                 </div>
-                <p class="progress-text">€350 / €1000</p>
-                <a href="https://buymeacoffee.com/nezu_ita" target="_blank" rel="noopener" class="donate-btn">
-                    <span>Donami un caffè ☕</span>
+                <div class="donation-badge">
+                    <span class="donation-badge-icon">🎯</span>
+                    <span class="donation-badge-text">Goal: Nuovo Setup Gaming</span>
+                </div>
+                <h2 class="donation-title">Supporta il Nuovo PC</h2>
+                <p class="donation-desc">Ogni caffè mi aiuta a creare contenuti migliori e migliorare il mio setup!</p>
+                <a href="https://buymeacoffee.com/nezu_ita" target="_blank" rel="noopener" class="donate-btn" id="donateBtn">
+                    <span>Supportami con un caffè ☕</span>
                     <div class="btn-shine"></div>
                 </a>
+                <p class="donation-thanks">Grazie per il sostegno! ❤️</p>
             </div>
         </section>
 
