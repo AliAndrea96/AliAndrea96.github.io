@@ -101,6 +101,7 @@
         <!-- Donation Section -->
         <section class="donation fade-in" data-delay="400">
             <div class="donation-card">
+                <div class="donation-card-glow"></div>
                 <div class="donation-pc-wrapper">
                     <div class="donation-pc-glow"></div>
                     <svg class="donation-pc-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -126,14 +127,56 @@
                 </div>
                 <div class="donation-badge">
                     <span class="donation-badge-icon">🎯</span>
-                    <span class="donation-badge-text">Goal: Nuovo Setup Gaming</span>
+                    <span class="donation-badge-text">Nuovo Setup Gaming</span>
                 </div>
                 <h2 class="donation-title">Supporta il Nuovo PC</h2>
-                <p class="donation-desc">Ogni caffè mi aiuta a creare contenuti migliori e migliorare il mio setup!</p>
+                <p class="donation-desc">Ogni caffè, live o video mi aiuta a raggiungere il mio nuovo setup gaming!</p>
+
+                <!-- Progress bar -->
+                <div class="progress-block">
+                    <div class="progress-header">
+                        <span class="progress-label">💰 Raccolti</span>
+                        <span class="progress-amount"><strong>240€</strong> / 3000€</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill" data-target="8">
+                            <span class="progress-shine"></span>
+                        </div>
+                    </div>
+                    <div class="progress-footer">
+                        <span class="progress-pct" id="progressPct">0%</span>
+                        <span class="progress-left">Mancano 2760€ 🙏</span>
+                    </div>
+                </div>
+
+                <!-- Donate button -->
                 <a href="https://buymeacoffee.com/nezu_ita" target="_blank" rel="noopener" class="donate-btn" id="donateBtn">
                     <span>Supportami con un caffè ☕</span>
                     <div class="btn-shine"></div>
                 </a>
+
+                <!-- PC config -->
+                <div class="pc-config">
+                    <div class="pc-config-header">
+                        <span class="pc-config-icon">🖥️</span>
+                        <span>La configurazione del Nuovo PC</span>
+                    </div>
+                    <ul class="pc-config-list">
+                        <li><span class="pc-config-name">AMD Ryzen 7 9800X3D</span><span class="pc-config-price">453€</span></li>
+                        <li><span class="pc-config-name">Palit RTX 5070 Ti 16GB</span><span class="pc-config-price">1.170€</span></li>
+                        <li><span class="pc-config-name">RAM Kingston 32GB DDR5 6000</span><span class="pc-config-price">639€</span></li>
+                        <li><span class="pc-config-name">SSD Lexar NM990 2TB PCIe 5.0</span><span class="pc-config-price">309€</span></li>
+                        <li><span class="pc-config-name">MSI B850 Gaming Plus WiFi6E</span><span class="pc-config-price">157€</span></li>
+                        <li><span class="pc-config-name">Corsair 3500X LX-R RGB</span><span class="pc-config-price">—</span></li>
+                        <li><span class="pc-config-name">Deepcool AG620 G2 ARGB</span><span class="pc-config-price">43€</span></li>
+                        <li><span class="pc-config-name">MSI MAG A850GL 850W</span><span class="pc-config-price">96€</span></li>
+                    </ul>
+                    <div class="pc-config-total">Totale: <strong>≈ 2.885€</strong></div>
+                    <a href="https://www.pccomponentes.it/configuratore/C5420d349" target="_blank" rel="noopener" class="pc-config-link">
+                        Vedi configurazione completa →
+                    </a>
+                </div>
+
                 <p class="donation-thanks">Grazie per il sostegno! ❤️</p>
             </div>
         </section>

@@ -222,3 +222,39 @@
         }
     }, { passive: true });
 })();
+
+// ---- Donation Progress Bar ----
+(function initProgressBar() {
+    const fill = document.getElementById('progressFill');
+    const pct = document.getElementById('progressPct');
+    if (!fill || !pct) return;
+
+    const target = parseFloat(fill.dataset.target || 0);
+    let animated = false;
+
+    function animateProgress() {
+        if (animated) return;
+        const rect = fill.parentElement.getBoundingClientRect();
+        if (rect.top > window.innerHeight || rect.bottom < 0) return;
+        animated = true;
+
+        fill.style.width = target + '%';
+        let current = 0;
+        const duration = 1600;
+        const start = performance.now();
+
+        function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            current = Math.round(eased * target);
+            pct.textContent = current + '%';
+            if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('scroll', animateProgress, { passive: true });
+    window.addEventListener('load', animateProgress);
+    animateProgress();
+})();
