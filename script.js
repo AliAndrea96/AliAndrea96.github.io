@@ -6,7 +6,11 @@
 // ---- Floating Particles ----
 (function initParticles() {
     const canvas = document.getElementById('particles');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let particles = [];
     let w, h;
     let animating = true;
@@ -50,7 +54,6 @@
             this.pulse += this.pulseSpeed;
 
             if (this.x < -10 || this.x > w + 10 || this.y < -10 || this.y > h + 10) {
-                this.reset();
                 this.x = Math.random() * w;
                 this.y = Math.random() < 0.5 ? -5 : h + 5;
             }
@@ -80,20 +83,24 @@
     function animate() {
         if (!animating) return;
         ctx.clearRect(0, 0, w, h);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+        }
         requestAnimationFrame(animate);
     }
 
-    // Pause animations when tab is not visible
+    // Pause animations when tab is not visible (or motion reduced)
     document.addEventListener('visibilitychange', () => {
-        animating = !document.hidden;
+        animating = !document.hidden && !reduceMotion;
         if (animating) animate();
     });
 
-    animate();
+    if (reduceMotion) {
+        for (let i = 0; i < particles.length; i++) particles[i].draw();
+    } else {
+        animate();
+    }
 })();
 
 // ---- Coin Burst Animation ----
@@ -135,8 +142,14 @@
 // ---- Magnetic Hover Effect on Cards ----
 (function initMagnetic() {
     document.querySelectorAll('.link-card').forEach(card => {
+        let rect = null;
+
+        card.addEventListener('mouseenter', () => {
+            rect = card.getBoundingClientRect();
+        }, { passive: true });
+
         card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
+            if (!rect) rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
             const moveX = x * 0.05;
@@ -145,6 +158,7 @@
         }, { passive: true });
 
         card.addEventListener('mouseleave', () => {
+            rect = null;
             card.style.transform = '';
         }, { passive: true });
     });
@@ -212,13 +226,23 @@
     const profile = document.querySelector('.profile');
     if (!profile) return;
 
-    window.addEventListener('scroll', () => {
+    let ticking = false;
+
+    function update() {
+        ticking = false;
         const scrollY = window.scrollY;
         const maxScroll = 300;
         if (scrollY < maxScroll) {
             const factor = 1 - scrollY / maxScroll;
             profile.style.opacity = 0.3 + 0.7 * factor;
             profile.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
         }
     }, { passive: true });
 })();
@@ -254,7 +278,17 @@
         requestAnimationFrame(tick);
     }
 
-    window.addEventListener('scroll', animateProgress, { passive: true });
+    let ticking = false;
+    function onScrollCheck() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            ticking = false;
+            animateProgress();
+        });
+    }
+
+    window.addEventListener('scroll', onScrollCheck, { passive: true });
     window.addEventListener('load', animateProgress);
     animateProgress();
 })();
