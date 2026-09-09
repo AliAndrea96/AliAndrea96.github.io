@@ -27,16 +27,19 @@
         reset() {
             this.x = Math.random() * w;
             this.y = Math.random() * h;
-            this.size = Math.random() * 1.5 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.2;
-            this.speedY = (Math.random() - 0.5) * 0.2;
-            this.opacity = Math.random() * 0.3 + 0.05;
+            this.size = Math.random() * 2.2 + 0.6;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.4 + 0.1;
             this.pulse = Math.random() * Math.PI * 2;
-            this.pulseSpeed = Math.random() * 0.01 + 0.003;
+            this.pulseSpeed = Math.random() * 0.015 + 0.004;
+            this.spark = Math.random() < 0.12;
+            this.sparkBig = Math.random() < 0.04;
             const colors = [
                 [255, 43, 52],    // Rosso Neon
                 [255, 223, 0],    // Giallo Elettrico
                 [56, 225, 255],   // Ciano Glitch
+                [255, 255, 255],  // Bianco (più raro)
             ];
             this.color = colors[Math.floor(Math.random() * colors.length)];
         }
@@ -55,15 +58,21 @@
 
         draw() {
             const currentOpacity = this.opacity * (0.6 + 0.4 * Math.sin(this.pulse));
+            if (this.sparkBig) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${currentOpacity * 0.15})`;
+                ctx.fill();
+            }
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.spark ? this.size * 0.6 : this.size, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${currentOpacity})`;
             ctx.fill();
         }
     }
 
-    // Reduced particle count for better performance
-    const count = Math.min(Math.floor((w * h) / 25000), 35);
+    // More particles on desktop (denser), capped for performance
+    const count = Math.min(Math.floor((w * h) / 11000), 140);
     for (let i = 0; i < count; i++) {
         particles.push(new Particle());
     }

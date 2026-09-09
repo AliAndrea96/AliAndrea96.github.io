@@ -516,6 +516,66 @@ body {
     }
 }
 
+/* ---- Desktop Enhancements ---- */
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px;
+        padding: 64px 32px 48px;
+        gap: 32px;
+    }
+
+    .profile {
+        padding: 32px 0;
+    }
+
+    .avatar-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+
+    .name {
+        font-size: 3rem;
+    }
+
+    .bio {
+        font-size: 1.1rem;
+    }
+
+    /* Links in a 2-column grid on desktop */
+    .links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .link-card {
+        padding: 20px 24px;
+        border-radius: 18px;
+    }
+
+    .link-name {
+        font-size: 1.05rem;
+    }
+
+    .link-desc {
+        font-size: 0.85rem;
+    }
+
+    /* Donation card wider with two-column feature highlight */
+    .donation {
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .donation-card {
+        padding: 44px 40px 36px;
+    }
+}
+
 /* ---- Selection Color ---- */
 ::selection {
     background: rgba(255, 43, 52, 0.3);
