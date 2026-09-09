@@ -787,11 +787,11 @@ body {
     }
 
     .donation-card {
-        padding: 36px 40px 24px;
+        padding: 32px 36px 24px;
         display: grid;
-        grid-template-columns: 1fr 1.1fr;
-        gap: 36px;
-        align-items: start;
+        grid-template-columns: 0.95fr 1.1fr;
+        gap: 32px;
+        align-items: center;
         text-align: left;
     }
 
@@ -809,17 +809,33 @@ body {
         align-items: center;
         text-align: center;
         border-right: 1px solid var(--glass-border);
-        padding-right: 36px;
+        padding-right: 32px;
     }
 
     .donation-pc-wrapper {
-        margin: 0 auto 16px;
+        margin: 0 auto 12px;
     }
 
-    .donation-desc {
-        max-width: 300px;
+    .donation-main .donation-badge {
+        margin-bottom: 8px;
+    }
+
+    .donation-main .donation-title {
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+    }
+
+    .donation-main .donation-desc {
+        max-width: 280px;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 16px;
+        font-size: 0.85rem;
+    }
+
+    .donation-main .progress-block {
+        margin-bottom: 16px;
+        padding: 14px;
     }
 
     .progress-block,
@@ -829,20 +845,29 @@ body {
     }
 
     .pc-config {
-        align-self: stretch;
+        align-self: center;
         display: flex;
         flex-direction: column;
         text-align: left;
         margin: 0;
         background: rgba(0, 0, 0, 0.25);
+        padding: 16px 18px;
     }
 
     .pc-config-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 24px;
         flex: 1;
+        align-content: start;
+    }
+
+    .pc-config-list li {
+        padding: 7px 0;
     }
 
     .pc-config-link {
-        margin-top: auto;
+        margin-top: 12px;
     }
 
     .donation-thanks {
