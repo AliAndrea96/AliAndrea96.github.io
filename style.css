@@ -682,6 +682,117 @@ body {
     box-shadow: 0 6px 20px rgba(56, 225, 255, 0.15);
 }
 
+/* ---- Live PC Section ---- */
+.live-pc {
+    width: 100%;
+    max-width: 1020px;
+    margin: 24px auto 0;
+}
+
+.live-pc-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(56, 225, 255, 0.18);
+    border-radius: 20px;
+    padding: 22px 24px;
+    text-align: left;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.live-pc-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.live-pc-icon {
+    font-size: 1.2rem;
+}
+
+.live-pc-title {
+    display: block;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.live-pc-model {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.live-pc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+}
+
+.live-pc-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.82rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.live-pc-list li:last-child,
+.live-pc-list li:nth-last-child(2) {
+    border-bottom: none;
+}
+
+.live-pc-name {
+    color: var(--text-secondary);
+    font-weight: 600;
+    flex-shrink: 0;
+    width: 56px;
+}
+
+.live-pc-detail {
+    color: var(--text-primary);
+    opacity: 0.85;
+}
+
+.live-pc-foot {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--glass-border);
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    text-align: center;
+    opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+    .live-pc {
+        margin-top: 18px;
+    }
+
+    .live-pc-card {
+        padding: 18px;
+    }
+
+    .live-pc-list {
+        grid-template-columns: 1fr;
+    }
+
+    .live-pc-list li:last-child,
+    .live-pc-list li:nth-last-child(2) {
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .live-pc-list li:last-child {
+        border-bottom: none;
+    }
+}
+
 /* Donate Button */
 .donate-btn {
     position: relative;
