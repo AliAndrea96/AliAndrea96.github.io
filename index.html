@@ -3,230 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nezu Content Creator</title>
+    <title>Nezu — Streamer & Content Creator</title>
+    <meta name="description" content="Nezu, streamer italiano: live di GTA V su Twitch e Kick, clip su YouTube e TikTok, community su Discord. Sostieni il nuovo PC da gaming.">
+    <meta name="theme-color" content="#141519">
+    <link rel="canonical" href="https://aliandrea96.github.io/">
+
+    <!-- Icon -->
     <link rel="icon" type="image/jpeg" href="Logo.jpg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" href="Logo.jpg">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nezu">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:title" content="Nezu — Streamer & Content Creator">
+    <meta property="og:description" content="Live di GTA V su Twitch e Kick, clip e community. Sostieni il nuovo PC da gaming.">
+    <meta property="og:url" content="https://aliandrea96.github.io/">
+    <meta property="og:image" content="https://aliandrea96.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nezu — content creator e streamer, live di GTA V su Twitch e Kick">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nezu — Streamer & Content Creator">
+    <meta name="twitter:description" content="Live di GTA V su Twitch e Kick, clip e community. Sostieni il nuovo PC da gaming.">
+    <meta name="twitter:image" content="https://aliandrea96.github.io/og-image.jpg">
+
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <meta name="description" content="Nezu - Content Creator, Gamer, Streamer">
-    <meta name="theme-color" content="#191A1E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nezu",
+        "alternateName": "nezu_ita",
+        "url": "https://aliandrea96.github.io/",
+        "image": "https://aliandrea96.github.io/Logo.jpg",
+        "description": "Streamer e content creator italiano: GTA V su Twitch e Kick.",
+        "sameAs": [
+            "https://www.twitch.tv/nezu_ita",
+            "https://kick.com/nezu-ita",
+            "https://www.youtube.com/@Nezu_ITA",
+            "https://www.tiktok.com/@nezu_ita",
+            "https://www.instagram.com/andrea_alii"
+        ]
+    }
+    </script>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    <canvas id="particles"></canvas>
+    <a class="skip-link" href="#top">Vai al contenuto</a>
 
-    <main class="container">
-        <!-- Profile Section -->
-        <section class="profile fade-in">
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#top">
+                <img src="Logo.jpg" alt="" width="30" height="30">
+                <span>Nezu</span>
+            </a>
+            <nav class="topnav" aria-label="Navigazione principale">
+                <a href="#social">Social</a>
+                <a href="#setup">Setup</a>
+                <a href="#supporta" class="topnav-cta">Supporta</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top" class="container" tabindex="-1">
+
+        <!-- Hero -->
+        <section class="hero fade-in">
             <div class="avatar-wrapper">
-                <div class="avatar-glow"></div>
+                <div class="avatar-glow" aria-hidden="true"></div>
                 <div class="avatar">
-                    <img src="Logo.jpg" alt="Logo" loading="eager">
+                    <img src="Logo.jpg" alt="Logo di Nezu" width="180" height="180">
                 </div>
             </div>
-            <h1 class="name">Nezu</h1>
-            <p class="bio">Content Creator | Gamer | Streamer</p>
+
+            <p class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span>Content Creator · Streamer</p>
+            <h1 class="hero-name">Nezu</h1>
+            <p class="hero-bio">Live di GTA&nbsp;V su Twitch e Kick, clip e una community che cresce ogni giorno. Il setup cresce insieme a noi.</p>
+
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="https://www.twitch.tv/nezu_ita" target="_blank" rel="noopener">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+                    Guarda la live
+                </a>
+                <a class="btn btn-ghost" href="https://discord.gg/kYhjKGtrPJ" target="_blank" rel="noopener">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+                    Entra nel Discord
+                </a>
+            </div>
+
+            <ul class="hero-tags" aria-label="In breve">
+                <li>GTA V</li>
+                <li>Twitch</li>
+                <li>Kick</li>
+                <li>Community</li>
+            </ul>
         </section>
 
-        <!-- Links Section -->
-        <section class="links">
-            <a href="https://www.tiktok.com/@nezu_ita" target="_blank" rel="noopener" class="link-card fade-in" data-delay="100" style="--accent: #00f2ea; --accent-glow: rgba(0,242,234,0.3);">
-                <div class="link-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </div>
-                <div class="link-info">
-                    <span class="link-name">TikTok</span>
-                    <span class="link-desc">@nezu_ita</span>
-                </div>
-                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+        <!-- Social -->
+        <section id="social" class="section fade-in" data-delay="120">
+            <div class="section-head">
+                <span class="section-eyebrow">01 — Community</span>
+                <h2>Seguimi</h2>
+                <p>Tutti i canali in un posto solo: live, clip e community.</p>
+            </div>
 
-            <a href="https://www.youtube.com/@Nezu_ITA" target="_blank" rel="noopener" class="link-card fade-in" data-delay="150" style="--accent: #ff0000; --accent-glow: rgba(255,0,0,0.3);">
-                <div class="link-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </div>
-                <div class="link-info">
-                    <span class="link-name">YouTube</span>
-                    <span class="link-desc">@Nezu_ITA</span>
-                </div>
-                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            <div class="links">
+                <a href="https://www.tiktok.com/@nezu_ita" target="_blank" rel="noopener" class="link-card" style="--accent: #00f2ea; --accent-glow: rgba(0,242,234,0.28);">
+                    <span class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </span>
+                    <span class="link-info">
+                        <span class="link-name">TikTok</span>
+                        <span class="link-desc">@nezu_ita</span>
+                    </span>
+                    <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="sr-only">(si apre in una nuova scheda)</span>
+                </a>
 
-            <a href="https://www.twitch.tv/nezu_ita" target="_blank" rel="noopener" class="link-card fade-in" data-delay="200" style="--accent: #9146ff; --accent-glow: rgba(145,70,255,0.3);">
-                <div class="link-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
-                </div>
-                <div class="link-info">
-                    <span class="link-name">Twitch</span>
-                    <span class="link-desc">nezu_ita</span>
-                </div>
-                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+                <a href="https://www.youtube.com/@Nezu_ITA" target="_blank" rel="noopener" class="link-card" style="--accent: #ff3b3b; --accent-glow: rgba(255,59,59,0.28);">
+                    <span class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </span>
+                    <span class="link-info">
+                        <span class="link-name">YouTube</span>
+                        <span class="link-desc">@Nezu_ITA</span>
+                    </span>
+                    <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="sr-only">(si apre in una nuova scheda)</span>
+                </a>
 
-            <a href="https://kick.com/nezu-ita" target="_blank" rel="noopener" class="link-card fade-in" data-delay="250" style="--accent: #53fc18; --accent-glow: rgba(83,252,24,0.3);">
-                <div class="link-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm4.5 6.5v9h2.25v-5.5l2.75 3.25h1.5l-3-3.5 2.75-3.25h-1.5l-2.25 2.5v-2.5h-2.5z"/></svg>
-                </div>
-                <div class="link-info">
-                    <span class="link-name">Kick</span>
-                    <span class="link-desc">nezu-ita</span>
-                </div>
-                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+                <a href="https://www.twitch.tv/nezu_ita" target="_blank" rel="noopener" class="link-card" style="--accent: #a970ff; --accent-glow: rgba(169,112,255,0.28);">
+                    <span class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+                    </span>
+                    <span class="link-info">
+                        <span class="link-name">Twitch</span>
+                        <span class="link-desc">nezu_ita</span>
+                    </span>
+                    <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="sr-only">(si apre in una nuova scheda)</span>
+                </a>
 
-            <a href="https://www.instagram.com/andrea_alii" target="_blank" rel="noopener" class="link-card fade-in" data-delay="300" style="--accent: #e1306c; --accent-glow: rgba(225,48,108,0.3);">
-                <div class="link-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </div>
-                <div class="link-info">
-                    <span class="link-name">Instagram</span>
-                    <span class="link-desc">@andrea_alii</span>
-                </div>
-                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+                <a href="https://kick.com/nezu-ita" target="_blank" rel="noopener" class="link-card" style="--accent: #53fc18; --accent-glow: rgba(83,252,24,0.24);">
+                    <span class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm4.5 6.5v9h2.25v-5.5l2.75 3.25h1.5l-3-3.5 2.75-3.25h-1.5l-2.25 2.5v-2.5h-2.5z"/></svg>
+                    </span>
+                    <span class="link-info">
+                        <span class="link-name">Kick</span>
+                        <span class="link-desc">nezu-ita</span>
+                    </span>
+                    <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="sr-only">(si apre in una nuova scheda)</span>
+                </a>
 
-            <a href="https://discord.gg/kYhjKGtrPJ" target="_blank" rel="noopener" class="link-card fade-in" data-delay="350" style="--accent: #5865f2; --accent-glow: rgba(88,101,242,0.3);">
-                <div class="link-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
-                </div>
-                <div class="link-info">
-                    <span class="link-name">Discord</span>
-                    <span class="link-desc">Entra nel server</span>
-                </div>
-                <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+                <a href="https://www.instagram.com/andrea_alii" target="_blank" rel="noopener" class="link-card" style="--accent: #e1306c; --accent-glow: rgba(225,48,108,0.28);">
+                    <span class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </span>
+                    <span class="link-info">
+                        <span class="link-name">Instagram</span>
+                        <span class="link-desc">@andrea_alii</span>
+                    </span>
+                    <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="sr-only">(si apre in una nuova scheda)</span>
+                </a>
+
+                <a href="https://discord.gg/kYhjKGtrPJ" target="_blank" rel="noopener" class="link-card" style="--accent: #8b95ff; --accent-glow: rgba(88,101,242,0.3);">
+                    <span class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+                    </span>
+                    <span class="link-info">
+                        <span class="link-name">Discord</span>
+                        <span class="link-desc">Entra nel server</span>
+                    </span>
+                    <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="sr-only">(si apre in una nuova scheda)</span>
+                </a>
+            </div>
         </section>
 
-        <!-- Donation Section -->
-        <section class="donation fade-in" data-delay="400">
-            <div class="donation-card">
-                <div class="donation-card-glow"></div>
+        <!-- Setup -->
+        <section id="setup" class="section fade-in" data-delay="200">
+            <div class="section-head">
+                <span class="section-eyebrow">02 — Setup</span>
+                <h2>Il mio setup</h2>
+                <p>Dal PC fisso del 2017 al portatile con cui vado in live oggi.</p>
+            </div>
 
-                <!-- Current PC -->
-                <div class="pc-current">
-                    <div class="pc-current-header">
-                        <span class="pc-current-icon">🗄️</span>
-                        <span>PC fisso (2017)</span>
-                    </div>
-                    <ul class="pc-current-list">
-                        <li><span class="pc-current-name">CPU</span><span class="pc-current-detail">Intel Core i5-7500</span></li>
-                        <li><span class="pc-current-name">GPU</span><span class="pc-current-detail">NVIDIA GTX 1060 3GB</span></li>
-                        <li><span class="pc-current-name">RAM</span><span class="pc-current-detail">16 GB DDR4</span></li>
-                        <li><span class="pc-current-name">Mobo</span><span class="pc-current-detail">MSI B250M Bazooka</span></li>
-                        <li><span class="pc-current-name">SSD</span><span class="pc-current-detail">Kingston 120 GB</span></li>
-                        <li><span class="pc-current-name">HDD</span><span class="pc-current-detail">WD 1 TB</span></li>
+            <div class="setup-grid">
+                <article class="spec-card spec-retired">
+                    <header class="spec-head">
+                        <span class="spec-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+                        </span>
+                        <div class="spec-titles">
+                            <h3 class="spec-title">PC fisso (2017)</h3>
+                            <span class="spec-sub">Il PC che mi ha fatto iniziare</span>
+                        </div>
+                        <span class="spec-tag spec-tag-retired">In pensione</span>
+                    </header>
+                    <ul class="spec-list">
+                        <li><span class="spec-name">CPU</span><span class="spec-value">Intel Core i5-7500</span></li>
+                        <li><span class="spec-name">GPU</span><span class="spec-value">NVIDIA GTX 1060 3GB</span></li>
+                        <li><span class="spec-name">RAM</span><span class="spec-value">16 GB DDR4 2400</span></li>
+                        <li><span class="spec-name">Mobo</span><span class="spec-value">MSI B250M Bazooka</span></li>
+                        <li><span class="spec-name">SSD</span><span class="spec-value">Kingston 120 GB</span></li>
+                        <li><span class="spec-name">HDD</span><span class="spec-value">WD 1 TB</span></li>
+                        <li><span class="spec-name">SO</span><span class="spec-value">Windows 10 Home</span></li>
                     </ul>
-                    <div class="pc-current-foot">Il PC fisso del 2017 — è ora di aggiornarlo! 🚀</div>
-                </div>
+                    <p class="spec-foot">Ha dato tutto: ora è il momento di aggiornarlo. 🚀</p>
+                </article>
 
-                <div class="donation-main">
-                    <div class="donation-pc-wrapper">
-                        <div class="donation-pc-glow"></div>
-                        <svg class="donation-pc-icon" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Monitor -->
+                <article class="spec-card spec-live">
+                    <header class="spec-head">
+                        <span class="spec-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 19h20"/></svg>
+                        </span>
+                        <div class="spec-titles">
+                            <h3 class="spec-title">PC delle live</h3>
+                            <span class="spec-sub">Lenovo IdeaPad Slim 3 15IAH8</span>
+                        </div>
+                        <span class="spec-tag spec-tag-live"><span class="tag-dot" aria-hidden="true"></span>Attuale</span>
+                    </header>
+                    <ul class="spec-list">
+                        <li><span class="spec-name">CPU</span><span class="spec-value">Intel Core i5-12450H (8C/12T)</span></li>
+                        <li><span class="spec-name">GPU</span><span class="spec-value">Intel UHD Graphics</span></li>
+                        <li><span class="spec-name">RAM</span><span class="spec-value">16 GB LPDDR5-4800</span></li>
+                        <li><span class="spec-name">SSD</span><span class="spec-value">Micron 512 GB NVMe</span></li>
+                        <li><span class="spec-name">Display</span><span class="spec-value">15.6" Full HD IPS</span></li>
+                        <li><span class="spec-name">SO</span><span class="spec-value">Windows 11 Home</span></li>
+                    </ul>
+                    <p class="spec-foot">Streaming OBS a 720p60 con encoder QuickSync. 🎥</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Supporto -->
+        <section id="supporta" class="section fade-in" data-delay="280">
+            <div class="section-head">
+                <span class="section-eyebrow">03 — Supporto</span>
+                <h2>Supporta il nuovo PC</h2>
+                <p>Un contributo alla volta, ricostruiamo il setup da gaming.</p>
+            </div>
+
+            <div class="support-card" id="supportCard">
+                <div class="support-intro">
+                    <div class="support-art" aria-hidden="true">
+                        <div class="support-art-glow"></div>
+                        <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="15" y="10" width="90" height="55" rx="4" stroke="#FF2B34" stroke-width="2.5" fill="rgba(255,43,52,0.08)"/>
-                            <rect x="22" y="17" width="76" height="41" rx="2" fill="#191A1E"/>
-                            <!-- Screen content - gaming grid -->
+                            <rect x="22" y="17" width="76" height="41" rx="2" fill="#141519"/>
                             <rect x="26" y="21" width="15" height="15" rx="1" fill="rgba(56,225,255,0.3)"/>
                             <rect x="44" y="21" width="15" height="15" rx="1" fill="rgba(255,43,52,0.3)"/>
                             <rect x="62" y="21" width="15" height="15" rx="1" fill="rgba(255,223,0,0.3)"/>
                             <rect x="80" y="21" width="15" height="15" rx="1" fill="rgba(83,252,24,0.3)"/>
                             <rect x="26" y="39" width="69" height="14" rx="1" fill="rgba(255,255,255,0.05)"/>
-                            <!-- Stand -->
                             <path d="M50 65 L70 65 L66 78 L54 78 Z" fill="rgba(255,43,52,0.15)" stroke="#FF2B34" stroke-width="1.5"/>
                             <rect x="48" y="78" width="24" height="3" rx="1.5" fill="#FF2B34"/>
-                            <!-- Keyboard -->
                             <rect x="30" y="85" width="60" height="8" rx="2" fill="rgba(255,43,52,0.1)" stroke="rgba(255,43,52,0.4)" stroke-width="1"/>
-                            <!-- RGB lights -->
                             <circle cx="20" cy="37" r="2" fill="#38E1FF" class="pc-light-1"/>
                             <circle cx="100" cy="37" r="2" fill="#FF2B34" class="pc-light-2"/>
                             <circle cx="60" cy="90" r="1.5" fill="#FFDF00" class="pc-light-3"/>
                         </svg>
                     </div>
-                    <div class="donation-badge">
-                        <span class="donation-badge-icon">🎯</span>
-                        <span class="donation-badge-text">Nuovo Setup Gaming</span>
-                    </div>
-                    <h2 class="donation-title">Supporta il Nuovo PC</h2>
-                    <p class="donation-desc">Con il tuo supporto, un passo in più verso il mio nuovo setup gaming!</p>
 
-                    <!-- Progress bar -->
+                    <span class="support-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4z"/></svg>
+                        Nuovo setup gaming
+                    </span>
+
+                    <h3 class="support-title">Un PC per streammare e giocare</h3>
+                    <p class="support-desc">Il PC fisso del 2017 ha dato tutto. Con il tuo aiuto arrivo a una macchina che regge live fluide, GTA V e editing senza compromessi.</p>
+
                     <div class="progress-block">
                         <div class="progress-header">
-                            <span class="progress-label">💰 Raccolti</span>
-                            <span class="progress-amount"><strong>535€</strong> / 3000€</span>
+                            <span class="progress-label">Raccolti</span>
+                            <span class="progress-amount"><strong id="raisedAmount">535€</strong> <span id="goalAmount">/ 3000€</span></span>
                         </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" id="progressFill" data-target="18">
+                        <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Raccolta fondi per il nuovo PC" aria-valuemin="0" aria-valuemax="3000" aria-valuenow="535">
+                            <div class="progress-fill" id="progressFill" data-raised="535" data-goal="3000" style="width:18%">
                                 <span class="progress-shine"></span>
                             </div>
                         </div>
                         <div class="progress-footer">
-                            <span class="progress-pct" id="progressPct">0%</span>
-                            <span class="progress-left">Mancano 2465€ 🙏</span>
+                            <span class="progress-pct" id="progressPct">18%</span>
+                            <span class="progress-left" id="progressLeft">Mancano 2.465€</span>
                         </div>
                     </div>
 
-                    <!-- Donate button -->
                     <a href="https://streamelements.com/nezu_ita/tip" target="_blank" rel="noopener" class="donate-btn" id="donateBtn">
-                        <span>Supportami ☕</span>
-                        <div class="btn-shine"></div>
+                        <svg class="donate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.35-7-9a4 4 0 017-2.65A4 4 0 0119 11c0 4.65-7 9-7 9z"/></svg>
+                        <span>Dona ora</span>
+                        <span class="btn-shine" aria-hidden="true"></span>
                     </a>
-
-                    <p class="donation-thanks">Grazie per il sostegno! ❤️</p>
+                    <p class="support-note">Pagamento sicuro via StreamElements · PayPal</p>
                 </div>
 
-                <!-- PC config -->
-                <div class="pc-config">
-                    <div class="pc-config-header">
-                        <span class="pc-config-icon">🖥️</span>
-                        <span>Configurazione del nuovo PC</span>
+                <div class="support-config">
+                    <div class="config-head">
+                        <div>
+                            <span class="config-title">Configurazione del nuovo PC</span>
+                            <span class="config-sub">9 componenti selezionati</span>
+                        </div>
+                        <span class="config-total">≈ 3.193€</span>
                     </div>
-                    <ul class="pc-config-list">
-                        <li><span class="pc-config-name">AMD Ryzen 7 9800X3D</span><span class="pc-config-price">453,62€</span></li>
-                        <li><span class="pc-config-name">Palit RTX 5070 Ti 16GB</span><span class="pc-config-price">1.333,37€</span></li>
-                        <li><span class="pc-config-name">RAM Kingston 32GB DDR5 6000</span><span class="pc-config-price">649€</span></li>
-                        <li><span class="pc-config-name">SSD Lexar NM990 2TB PCIe 5.0</span><span class="pc-config-price">308,99€</span></li>
-                        <li><span class="pc-config-name">MSI B850 Gaming Plus WiFi6E</span><span class="pc-config-price">201,61€</span></li>
-                        <li><span class="pc-config-name">Corsair 3500X LX-R RGB</span><span class="pc-config-price">90,73€</span></li>
-                        <li><span class="pc-config-name">Deepcool AG620 G2 ARGB</span><span class="pc-config-price">42,99€</span></li>
-                        <li><span class="pc-config-name">MSI MAG A850GL 850W</span><span class="pc-config-price">95,68€</span></li>
-                        <li><span class="pc-config-name">Ventola Corsair RS120 ARGB</span><span class="pc-config-price">17,90€</span></li>
+                    <ul class="config-list">
+                        <li><span class="config-name">AMD Ryzen 7 9800X3D</span><span class="config-price">453,62€</span></li>
+                        <li><span class="config-name">Palit RTX 5070 Ti 16GB</span><span class="config-price">1.333,37€</span></li>
+                        <li><span class="config-name">RAM Kingston 32GB DDR5 6000</span><span class="config-price">649€</span></li>
+                        <li><span class="config-name">SSD Lexar NM990 2TB PCIe 5.0</span><span class="config-price">308,99€</span></li>
+                        <li><span class="config-name">MSI B850 Gaming Plus WiFi6E</span><span class="config-price">201,61€</span></li>
+                        <li><span class="config-name">Corsair 3500X LX-R RGB</span><span class="config-price">90,73€</span></li>
+                        <li><span class="config-name">Deepcool AG620 G2 ARGB</span><span class="config-price">42,99€</span></li>
+                        <li><span class="config-name">MSI MAG A850GL 850W Gold</span><span class="config-price">95,68€</span></li>
+                        <li><span class="config-name">Ventola Corsair RS120 ARGB</span><span class="config-price">17,90€</span></li>
                     </ul>
-                    <div class="pc-config-total">Totale: <strong>≈ 3.193€</strong></div>
-                    <a href="https://www.pccomponentes.it/configuratore/C5420d349" target="_blank" rel="noopener" class="pc-config-link">
-                        Vedi configurazione completa →
+                    <a href="https://www.pccomponentes.it/configuratore/C5420d349" target="_blank" rel="noopener" class="config-link">
+                        Vedi configurazione completa
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                        <span class="sr-only">(si apre in una nuova scheda)</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Live PC Section -->
-        <section class="live-pc fade-in" data-delay="450">
-            <div class="live-pc-card">
-                <div class="live-pc-header">
-                    <span class="live-pc-icon">💻</span>
-                    <div>
-                        <span class="live-pc-title">Il PC delle live</span>
-                        <span class="live-pc-model">Lenovo IdeaPad Slim 3 15IAH8</span>
-                    </div>
-                </div>
-                <ul class="live-pc-list">
-                    <li><span class="live-pc-name">CPU</span><span class="live-pc-detail">Intel Core i5-12450H (8 core / 12 thread)</span></li>
-                    <li><span class="live-pc-name">GPU</span><span class="live-pc-detail">Intel UHD Graphics</span></li>
-                    <li><span class="live-pc-name">RAM</span><span class="live-pc-detail">16 GB LPDDR5-4800</span></li>
-                    <li><span class="live-pc-name">SSD</span><span class="live-pc-detail">Micron 512 GB NVMe</span></li>
-                    <li><span class="live-pc-name">Display</span><span class="live-pc-detail">15.6" Full HD IPS</span></li>
-                    <li><span class="live-pc-name">SO</span><span class="live-pc-detail">Windows 11 Home</span></li>
-                </ul>
-                <div class="live-pc-foot">È il portatile con cui trasmetto: OBS a 720p60 con encoder QuickSync. 🎥</div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-                <footer class="footer fade-in" data-delay="500">
-            <p>Nezu Content Creator © 2026</p>
+        <footer class="footer">
+            <p>Nezu Content Creator © <span id="year">2026</span></p>
+            <a href="#top" class="back-top">Torna su <span aria-hidden="true">↑</span></a>
         </footer>
     </main>
 

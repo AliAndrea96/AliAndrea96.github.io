@@ -1,294 +1,327 @@
 /* ============================================
-   LINK-IN-BIO - Interactive Animations
-   Palette: Rosso Neon + Rosso Scuro + Nero + Giallo + Ciano
+   NEZU — interazioni 2.0
    ============================================ */
 
-// ---- Floating Particles ----
-(function initParticles() {
-    const canvas = document.getElementById('particles');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+(function () {
+    'use strict';
 
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let particles = [];
-    let w, h;
-    let animating = true;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const canAnimate = () => !reduceMotion.matches;
 
-    function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-    }
+    /* ---- Particle background ---- */
+    (function initParticles() {
+        const canvas = document.getElementById('particles');
+        if (!canvas) return;
 
-    resize();
-    window.addEventListener('resize', resize);
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-    class Particle {
-        constructor() {
-            this.reset();
-        }
+        const COLORS = [
+            [255, 43, 52],
+            [255, 223, 0],
+            [56, 225, 255],
+            [255, 255, 255]
+        ];
 
-        reset() {
-            this.x = Math.random() * w;
-            this.y = Math.random() * h;
-            this.size = Math.random() * 2.2 + 0.6;
-            this.speedX = (Math.random() - 0.5) * 0.3;
-            this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.4 + 0.1;
-            this.pulse = Math.random() * Math.PI * 2;
-            this.pulseSpeed = Math.random() * 0.015 + 0.004;
-            this.spark = Math.random() < 0.12;
-            this.sparkBig = Math.random() < 0.04;
-            const colors = [
-                [255, 43, 52],    // Rosso Neon
-                [255, 223, 0],    // Giallo Elettrico
-                [56, 225, 255],   // Ciano Glitch
-                [255, 255, 255],  // Bianco (più raro)
-            ];
-            this.color = colors[Math.floor(Math.random() * colors.length)];
-        }
+        let particles = [];
+        let w = 0;
+        let h = 0;
+        let running = false;
+        let resizeTimer = 0;
 
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            this.pulse += this.pulseSpeed;
-
-            if (this.x < -10 || this.x > w + 10 || this.y < -10 || this.y > h + 10) {
-                this.x = Math.random() * w;
-                this.y = Math.random() < 0.5 ? -5 : h + 5;
+        class Particle {
+            constructor() {
+                this.reset();
             }
-        }
 
-        draw() {
-            const currentOpacity = this.opacity * (0.6 + 0.4 * Math.sin(this.pulse));
-            if (this.sparkBig) {
+            reset() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.size = Math.random() * 2.1 + 0.6;
+                this.speedX = (Math.random() - 0.5) * 0.28;
+                this.speedY = (Math.random() - 0.5) * 0.28;
+                this.opacity = Math.random() * 0.4 + 0.1;
+                this.pulse = Math.random() * Math.PI * 2;
+                this.pulseSpeed = Math.random() * 0.015 + 0.004;
+                this.spark = Math.random() < 0.12;
+                this.sparkBig = Math.random() < 0.04;
+                this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.pulse += this.pulseSpeed;
+
+                if (this.x < -10 || this.x > w + 10 || this.y < -10 || this.y > h + 10) {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() < 0.5 ? -5 : h + 5;
+                }
+            }
+
+            draw() {
+                const alpha = this.opacity * (0.6 + 0.4 * Math.sin(this.pulse));
+                const [r, g, b] = this.color;
+
+                if (this.sparkBig) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.15})`;
+                    ctx.fill();
+                }
+
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${currentOpacity * 0.15})`;
+                ctx.arc(this.x, this.y, this.spark ? this.size * 0.6 : this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
                 ctx.fill();
             }
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.spark ? this.size * 0.6 : this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${this.color[0]}, ${this.color[1]}, ${this.color[2]}, ${currentOpacity})`;
-            ctx.fill();
-        }
-    }
-
-    // More particles on desktop (denser), capped for performance
-    const count = Math.min(Math.floor((w * h) / 11000), 140);
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-    }
-
-    function animate() {
-        if (!animating) return;
-        ctx.clearRect(0, 0, w, h);
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-        }
-        requestAnimationFrame(animate);
-    }
-
-    // Pause animations when tab is not visible (or motion reduced)
-    document.addEventListener('visibilitychange', () => {
-        animating = !document.hidden && !reduceMotion;
-        if (animating) animate();
-    });
-
-    if (reduceMotion) {
-        for (let i = 0; i < particles.length; i++) particles[i].draw();
-    } else {
-        animate();
-    }
-})();
-
-// ---- Coin Burst Animation ----
-(function initCoinBurst() {
-    const btn = document.getElementById('donateBtn');
-    if (!btn) return;
-
-    const coins = ['🪙', '⭐', '✨', '🔥'];
-    let isAnimating = false;
-
-    btn.addEventListener('click', function(e) {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        for (let i = 0; i < 8; i++) {
-            setTimeout(() => {
-                const coin = document.createElement('div');
-                coin.className = 'coin';
-                coin.textContent = coins[Math.floor(Math.random() * coins.length)];
-                
-                const rect = this.getBoundingClientRect();
-                const startX = rect.left + rect.width / 2 + (Math.random() - 0.5) * 60;
-                const startY = rect.top;
-                
-                coin.style.left = startX + 'px';
-                coin.style.top = startY + 'px';
-                coin.style.setProperty('--random-x', (Math.random() - 0.5) * 80 + 'px');
-                
-                document.body.appendChild(coin);
-                
-                setTimeout(() => coin.remove(), 1200);
-            }, i * 60);
         }
 
-        setTimeout(() => { isAnimating = false; }, 600);
-    });
-})();
+        function build() {
+            const count = Math.min(Math.floor((w * h) / 11500), 140);
+            particles = new Array(count);
+            for (let i = 0; i < count; i++) particles[i] = new Particle();
+        }
 
-// ---- Magnetic Hover Effect on Cards ----
-(function initMagnetic() {
-    document.querySelectorAll('.link-card').forEach(card => {
-        let rect = null;
+        function resize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            w = window.innerWidth;
+            h = window.innerHeight;
 
-        card.addEventListener('mouseenter', () => {
-            rect = card.getBoundingClientRect();
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            build();
+            if (!running) drawStatic();
+        }
+
+        function drawStatic() {
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < particles.length; i++) particles[i].draw();
+        }
+
+        function loop() {
+            if (!running) return;
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(loop);
+        }
+
+        function start() {
+            if (running || !canAnimate()) return;
+            running = true;
+            requestAnimationFrame(loop);
+        }
+
+        function stop() {
+            running = false;
+        }
+
+        resize();
+
+        window.addEventListener('resize', function () {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(resize, 180);
         }, { passive: true });
 
-        card.addEventListener('mousemove', (e) => {
-            if (!rect) rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            const moveX = x * 0.05;
-            const moveY = y * 0.05;
-            card.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        }, { passive: true });
-
-        card.addEventListener('mouseleave', () => {
-            rect = null;
-            card.style.transform = '';
-        }, { passive: true });
-    });
-})();
-
-// ---- Ripple Effect on Donate Button ----
-(function initRipple() {
-    const btn = document.getElementById('donateBtn');
-    if (!btn) return;
-
-    btn.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 2;
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            left: ${x}px;
-            top: ${y}px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: rippleOut 0.6s ease-out forwards;
-            pointer-events: none;
-        `;
-
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-    });
-
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes rippleOut {
-            to { transform: scale(1); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
-})();
-
-// ---- Tilt Effect on Donation Card ----
-(function initTilt() {
-    const card = document.querySelector('.donation-card');
-    if (!card) return;
-
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(600px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
-    }, { passive: true });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.transition = 'transform 0.4s ease';
-        setTimeout(() => card.style.transition = '', 400);
-    }, { passive: true });
-})();
-
-// ---- Subtle parallax on scroll ----
-(function initParallax() {
-    const profile = document.querySelector('.profile');
-    if (!profile) return;
-
-    let ticking = false;
-
-    function update() {
-        ticking = false;
-        const scrollY = window.scrollY;
-        const maxScroll = 300;
-        if (scrollY < maxScroll) {
-            const factor = 1 - scrollY / maxScroll;
-            profile.style.opacity = 0.3 + 0.7 * factor;
-            profile.style.transform = `translateY(${scrollY * 0.15}px)`;
-        }
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
-        }
-    }, { passive: true });
-})();
-
-// ---- Donation Progress Bar ----
-(function initProgressBar() {
-    const fill = document.getElementById('progressFill');
-    const pct = document.getElementById('progressPct');
-    if (!fill || !pct) return;
-
-    const target = parseFloat(fill.dataset.target || 0);
-    let animated = false;
-
-    function animateProgress() {
-        if (animated) return;
-        const rect = fill.parentElement.getBoundingClientRect();
-        if (rect.top > window.innerHeight || rect.bottom < 0) return;
-        animated = true;
-
-        fill.style.width = target + '%';
-        let current = 0;
-        const duration = 1600;
-        const start = performance.now();
-
-        function tick(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            current = Math.round(eased * target);
-            pct.textContent = current + '%';
-            if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-    }
-
-    let ticking = false;
-    function onScrollCheck() {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            ticking = false;
-            animateProgress();
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stop();
+            else start();
         });
-    }
 
-    window.addEventListener('scroll', onScrollCheck, { passive: true });
-    window.addEventListener('load', animateProgress);
-    animateProgress();
+        reduceMotion.addEventListener('change', function () {
+            if (canAnimate()) start();
+            else { stop(); drawStatic(); }
+        });
+
+        if (canAnimate()) start();
+    })();
+
+    /* ---- Coin burst on donate ---- */
+    (function initCoinBurst() {
+        const btn = document.getElementById('donateBtn');
+        if (!btn) return;
+
+        const coins = ['🪙', '⭐', '✨', '🔥'];
+        let busy = false;
+
+        btn.addEventListener('click', function () {
+            if (!canAnimate() || busy) return;
+            busy = true;
+
+            for (let i = 0; i < 8; i++) {
+                window.setTimeout(function () {
+                    const coin = document.createElement('div');
+                    coin.className = 'coin';
+                    coin.textContent = coins[Math.floor(Math.random() * coins.length)];
+
+                    const rect = btn.getBoundingClientRect();
+                    coin.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 60) + 'px';
+                    coin.style.top = rect.top + 'px';
+                    coin.style.setProperty('--random-x', ((Math.random() - 0.5) * 80) + 'px');
+
+                    document.body.appendChild(coin);
+                    window.setTimeout(function () { coin.remove(); }, 1200);
+                }, i * 60);
+            }
+
+            window.setTimeout(function () { busy = false; }, 600);
+        });
+    })();
+
+    /* ---- Magnetic hover on social cards ---- */
+    (function initMagnetic() {
+        if (!finePointer.matches) return;
+
+        document.querySelectorAll('.link-card').forEach(function (card) {
+            let rect = null;
+
+            card.addEventListener('mouseenter', function () {
+                if (!canAnimate()) return;
+                rect = card.getBoundingClientRect();
+            }, { passive: true });
+
+            card.addEventListener('mousemove', function (e) {
+                if (!rect || !canAnimate()) return;
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                card.style.setProperty('--mx', (x * 0.05).toFixed(2) + 'px');
+                card.style.setProperty('--my', (y * 0.05).toFixed(2) + 'px');
+            }, { passive: true });
+
+            card.addEventListener('mouseleave', function () {
+                rect = null;
+                card.style.setProperty('--mx', '0px');
+                card.style.setProperty('--my', '0px');
+            }, { passive: true });
+        });
+    })();
+
+    /* ---- Subtle 3D tilt on the support card ---- */
+    (function initTilt() {
+        if (!finePointer.matches) return;
+
+        const card = document.getElementById('supportCard');
+        if (!card) return;
+
+        card.addEventListener('mousemove', function (e) {
+            if (!canAnimate()) return;
+            const rect = card.getBoundingClientRect();
+            if (rect.height > window.innerHeight) return;
+
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(900px) rotateY(${(x * 2.2).toFixed(2)}deg) rotateX(${(-y * 2.2).toFixed(2)}deg)`;
+        }, { passive: true });
+
+        card.addEventListener('mouseleave', function () {
+            card.style.transform = '';
+            card.style.transition = 'transform 0.5s ease';
+            window.setTimeout(function () { card.style.transition = ''; }, 500);
+        }, { passive: true });
+    })();
+
+    /* ---- Donation progress ---- */
+    (function initProgress() {
+        const fill = document.getElementById('progressFill');
+        const track = document.getElementById('progressTrack');
+        const pctEl = document.getElementById('progressPct');
+        const leftEl = document.getElementById('progressLeft');
+        const raisedEl = document.getElementById('raisedAmount');
+        const goalEl = document.getElementById('goalAmount');
+        if (!fill || !track || !pctEl || !leftEl) return;
+
+        const raised = parseFloat(fill.dataset.raised) || 0;
+        const goal = parseFloat(fill.dataset.goal) || 0;
+        if (goal <= 0) return;
+
+        const percent = Math.min(100, Math.round((raised / goal) * 100));
+        const format = (value) => Math.round(value).toLocaleString('it-IT') + '€';
+
+        if (raisedEl) raisedEl.textContent = format(raised);
+        if (goalEl) goalEl.textContent = '/ ' + format(goal);
+
+        track.setAttribute('aria-valuemax', String(goal));
+        track.setAttribute('aria-valuenow', String(raised));
+        track.setAttribute('aria-valuetext', `${format(raised)} raccolti su ${format(goal)} (${percent}%)`);
+
+        let done = false;
+
+        function animate() {
+            if (done) return;
+            done = true;
+
+            fill.style.width = percent + '%';
+            pctEl.textContent = percent + '%';
+            leftEl.textContent = 'Mancano ' + format(goal - raised);
+
+            if (!canAnimate()) {
+                pctEl.textContent = percent + '%';
+                return;
+            }
+
+            const start = performance.now();
+            const duration = 1600;
+
+            function tick(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                pctEl.textContent = Math.round(eased * percent) + '%';
+                if (t < 1) requestAnimationFrame(tick);
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animate();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(fill.closest('.progress-block'));
+        } else {
+            animate();
+        }
+    })();
+
+    /* ---- Active section in top nav ---- */
+    (function initScrollSpy() {
+        const sections = document.querySelectorAll('#social, #setup, #supporta');
+        const links = document.querySelectorAll('.topnav a[href^="#"]');
+        if (!sections.length || !links.length || !('IntersectionObserver' in window)) return;
+
+        const map = new Map();
+        links.forEach(function (link) {
+            map.set(link.getAttribute('href').slice(1), link);
+        });
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                links.forEach(function (link) { link.classList.remove('is-active'); });
+                const link = map.get(entry.target.id);
+                if (link) link.classList.add('is-active');
+            });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+        sections.forEach(function (section) { observer.observe(section); });
+    })();
+
+    /* ---- Footer year ---- */
+    (function initYear() {
+        const el = document.getElementById('year');
+        if (el) el.textContent = String(new Date().getFullYear());
+    })();
 })();
